@@ -28,7 +28,7 @@ export const createThread = (msg: Message) =>
           client.startThreadWithMessage(msg.channel_id, msg.id, {
             name: threadName(msg.content),
           }),
-        () => "Could not create thread"
+        (err) => `createThread: ${err}`
       )
     )
   )
