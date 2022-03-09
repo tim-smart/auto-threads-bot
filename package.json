@@ -13,7 +13,7 @@
   "dependencies": {
     "dotenv": "^16.0.0",
     "droff": "^0.27.5",
-    "droff-helpers": "^0.6.0",
+    "droff-helpers": "^0.7.0",
     "droff-interactions": "^0.9.1",
     "fp-ts": "^2.11.8",
     "rxjs": "^7.5.5"
