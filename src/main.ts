@@ -5,7 +5,7 @@ import * as TE from "fp-ts/lib/TaskEither"
 import * as Rx from "rxjs"
 import * as RxO from "rxjs/operators"
 import * as Channels from "./channels"
-import { createThread, validMessage } from "./ops"
+import { createThread } from "./ops"
 
 Dotenv.config()
 
@@ -21,8 +21,11 @@ const [channels, channels$] = client.nonParentCacheFromWatch(
 )()
 
 const create$ = client.fromDispatch("MESSAGE_CREATE").pipe(
-  RxO.mergeMap((msg) => Rx.zip(Rx.of(msg), validMessage(channels)(msg))),
-  RxO.filter(([, valid]) => valid),
+  client.withCaches({
+    channel: channels.get,
+  })((m) => m.channel_id),
+  client.onlyWithCacheResults(),
+
   RxO.flatMap(([msg]) =>
     pipe(createThread(msg)({ client }), TE.mapLeft(console.error))()
   )
