@@ -1,5 +1,5 @@
 import { Cache } from "droff-helpers"
-import { watch$ } from "droff/dist/caches/channels"
+import { watch$ } from "droff/caches/channels"
 import { flow } from "fp-ts/lib/function"
 import * as RxO from "rxjs/operators"
 

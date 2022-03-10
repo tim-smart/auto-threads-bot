@@ -1,5 +1,5 @@
 import { Client } from "droff"
-import { Message } from "droff/dist/types"
+import { Message } from "droff/types"
 import { pipe } from "fp-ts/lib/function"
 import * as RTE from "fp-ts/lib/ReaderTaskEither"
 import * as TE from "fp-ts/lib/TaskEither"
